@@ -1,19 +1,19 @@
-\name{OR}
-\alias{OR}
+\name{OR.MCPerm}
+\alias{OR.MCPerm}
 \title{
-OR(odd ratio) for risk_allele
+A Monte Carlo permutation method for multiple OR(odd ratio) test correction in case/control association study
 }
 \description{
-OR(odd ratio) for risk_allele.
+A Monte Carlo permutation method for multiple OR(odd ratio) test correction in case/control association study.
 }
 \usage{
-OR(case_allele1, case_allele2, control_allele1, control_allele2)
+OR.MCPerm(case_allele1, case_allele2, control_allele1, control_allele2, repeatNum = 1000)
 }
 \arguments{
-  \item{case_allele1}{
+  \item{case_allele1   }{
 a non-negative integer, the frequency of allele1 in case samples. 
 }
-  \item{case_allele2}{
+  \item{case_allele2   }{
 a non-negative integer, the frequency of allele2 in case samples. 
 }
   \item{control_allele1}{
@@ -22,18 +22,29 @@ a non-negative integer, the frequency of allele1 in control samples.
   \item{control_allele2}{
 a non-negative integer, the frequency of allele2 in control samples. 
 }
+  \item{repeatNum}{
+an integer specifying the number of replicates used in the Monte Carlo permutation.
+}
 }
 \details{
 The odds ratio is a measure of effect size, describing the strength of association or non-independence
 between two binary data values.
+
+"OR.MCPerm" simulates permutation method to get p value for risk_allele, by generating random numbers 
+for the hypergeometric distribution based on the genotype statistic of original data. Seealso \code{\link{chisq.MCPerm}}.
 }
 \value{
-  \item{risk_allele }{risk_allele(OR>1).}
-  \item{OR }{the value of OR.}
-  \item{CI }{a matrix with one row, the 0.95 CI(Confidence Interval) of OR: lower limit OR, upper limit OR.}
+  \item{risk_allele }{risk_allele.}
+  \item{pValue }{the p value for the test.}
+  \item{obsOR }{the OR value for the true data.}
+  \item{permOR }{a vector with 'repeatNum' elements, the OR value for the simulation data.}
 }
 \references{
+William S Noble(Nat Biotechnol.2009): How does multiple testing correction work? 
+
 Edwards, A.W.F.(1963): The measure of association in a 2x2 table.
+
+Edgington. E.S.(1995): Randomization tests, 3rd ed.
 }
 \author{
 Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
@@ -42,8 +53,8 @@ Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
     \code{\link{Armitage}},
 	\code{\link{Armitage.TradPerm}},
     \code{\link{Armitage.MCPerm}},
+    \code{\link{OR}},
     \code{\link{OR.TradPerm}},
-	\code{\link{OR.MCPerm}},
 	\code{\link{permuteData}},
 	\code{\link{permuteGenotype}},
 	\code{\link{genotypeStat}},
@@ -60,6 +71,7 @@ case_allele1=23
 case_allele2=34
 control_allele1=26
 control_allele2=29
-OR(case_allele1, case_allele2, control_allele1, control_allele2)
+OR.MCPerm(23,34,26,29,repeatNum=5)
 }
-\keyword{ OR }
+\keyword{ OR.MCPerm }
+\keyword{ permutation }

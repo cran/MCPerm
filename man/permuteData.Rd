@@ -1,44 +1,57 @@
 \name{permuteData}
 \alias{permuteData}
 \title{
-Permute Data
+Permute the elements of a matrix
 }
 \description{
-Permute Data.
+Permute the elements of a matrix.
 }
 \usage{
 permuteData(dataLine, fromCol)
 }
 \arguments{
   \item{dataLine}{
-matrix or data.frame with one row need to be permuted.
+A matrix with one row.
 }
   \item{fromCol}{
-integer,the start column to permute.
+A positive integer, the start column to permute.
 }
 }
 \details{
-Permute Data. 
+Permute the elements of a matrix.
 }
 \value{
-The return value is a data.frame with one row.
+The return value is a matrix with one row and the elements has been permutated.
 }
 \references{
-Edgington. E.S. (1995) Randomization tests, 3rd ed. New York: Marcel-Dekker
+William S Noble(Nat Biotechnol.2009): How does multiple testing correction work? 
+
+Edgington. E.S.(1995): Randomization tests, 3rd ed.
 }
 \author{
-Yongshuai Jiang <jiangyongshuai@gmail.com>
+Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
 }
 \seealso{
-  \code{\link{genotypeStat}},
-  \code{\link{permuteMatrix}},   
-  \code{\link{OR}}, 
-  \code{\link{Armitage}},  
-  \code{\link{tradPerm}},
-  \code{\link{MCPerm}}
+    \code{\link{Armitage}},
+	\code{\link{Armitage.TradPerm}},
+    \code{\link{Armitage.MCPerm}},
+    \code{\link{OR}},
+	\code{\link{OR.TradPerm}},
+	\code{\link{OR.MCPerm}},
+	\code{\link{permuteGenotype}},
+	\code{\link{genotypeStat}},
+    \code{\link{chisq.TradPerm}},
+	\code{\link{chisq.MCPerm}},
+	\code{\link{fisher.TradPerm}},
+	\code{\link{fisher.MCPerm}},
+	\code{\link{rhyper}},
+	\code{\link{chisq.test}},
+	\code{\link{fisher.test}}
 }
 \examples{
-dataLine=matrix(c("rs12","1","2","3","4","5"),nrow=1)
-newData=permuteData(dataLine=dataLine,fromCol=2)
+dataLine1=matrix(c("rs12","AA","AG","GG","CG","AA"),nrow=1)
+permuteData(dataLine1,fromCol=2)
+dataLine2=matrix(c("rs12","AA","AG","GG","CG","AA","rs12","AA","AG","GG","CG","AA"),nrow=2,byrow=TRUE)
+permuteData(dataLine2,fromCol=2)
 }
-\keyword{permutation }
+\keyword{ permutation }

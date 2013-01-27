@@ -2,32 +2,54 @@
 \alias{exampleData}
 \docType{data}
 \title{
-Data Example for Function tradPerm and genotypeStat
+Data Example from GWA16
 }
 \description{
-Data Example for Function tradPerm and genotypeStat.
+Data Example from GWA16.
 }
 \usage{data(exampleData)}
 \format{
-  A data frame with 6 observations on the following 48 variables.
+  A matrix with 10 snps with 2062 samples.
   \describe{
-    The data frame with 48 Column:
-	  the first column: snp id;
-      47 column: genotype data,	e.g. A_A,A_G,G_G,?_?.  
+    first row: affection state for 2062 samples;
+	
+	other rows: genotype data for each snp, e.g. A_A A_G G_G ?_? ...
   }
 }
 \details{
- Data Example for Function tradPerm and genotypeStat.
+Data Example from GWA16.
+}
+\source{
+GAW16 Data from the North American Rheumatoid Arthritis Consortium (NARAC)
 }
 \references{
-Edgington. E.S. (1995) Randomization tests, 3rd ed. New York: Marcel-Dekker
+MacCluer JW, Cupples LA and Almasy L (eds) Genetic Analysis Workshop 16: Approaches to Analysis of Genome-Wide Data. Genetic Epidemiology 33 (Suppl 1), S1-S110 (2009). 
 }
 \examples{
-## import example data
+## import example data(data.frame)
 data(exampleData)
+## get the first line: affection state for samples
 data1=exampleData[1,,drop=FALSE]
+## get the second line: genotype data for a sepcifed snp
 data2=exampleData[2,,drop=FALSE]
-result1=tradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",testMethod="fisher",repeatNum=10)
+
+## Statistical allele and genotype frequency of the specified snp(rs#) for case-control data.
 result2=genotypeStat(data2,data1,fromCol=2,naString="?_?",sep="_")
+## allele frequency for case and control samples
+alleleResult=result2$alleleCount
+## genotype frequency for case and control samples
+genotypeReslut=result2$genotypeCount
+
+## use permutation test to do multiple test correction in case/control association study
+## return the correlated p_value and other information, see 'chisq.TradPerm'.
+result1=chisq.TradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",repeatNum=1000)
+p1=result1$pValue
+result2=fisher.TradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",repeatNum=1000)
+p2=result2$pValue
+result3=Armitage.TradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",repeatNum=1000)
+p3=result3$pValue
+result4=OR.TradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",repeatNum=1000)
+risk_allele=result4$risk_allele
+p4=result4$pValue
 }
-\keyword{datasets}
+\keyword{GWA16}
