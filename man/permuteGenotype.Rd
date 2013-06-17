@@ -1,48 +1,27 @@
 \name{permuteGenotype}
 \alias{permuteGenotype}
 \title{
-Fill the numerics of 2*3 table when fixed the row and column totals
+Permute the elements of genotype data
 }
 \description{
-Fill the numerics of 2*3 table when fixed the row and column totals.
+Permute the elements of genotype data.
 }
 \usage{
-permuteGenotype(case_11, case_12, case_22, control_11, control_12, control_22, n)
+permuteGenotype(dataLine, fromCol)
 }
 \arguments{
-  \item{case_11}{
-a non-negative integer, the frequency of genotype "allele1/allele1" in case samples. 
+  \item{dataLine}{
+A matrix with one row.
 }
-  \item{case_12}{
-a non-negative integer, the frequency of genotype "allele1/allele2" in case samples. 
-}
-  \item{case_22}{
-a non-negative integer, the frequency of genotype "allele2/allele2" in case samples. 
-}
-  \item{control_11}{
-a non-negative integer, the frequency of genotype "allele1/allele1" in control samples. 
-}
-  \item{control_12}{
-a non-negative integer, the frequency of genotype "allele1/allele2" in control samples. 
-}
-  \item{control_22}{
-a non-negative integer, the frequency of genotype "allele2/allele2" in control samples. 
-}
-  \item{n}{
-an integer specifying the number to generate.
+  \item{fromCol}{
+A positive integer, the start column to permute.
 }
 }
 \details{
-Fill the numerics of 2*3 table when fixed the row and column totals, by twice generating 
-random numbers for the hypergeometric distribution, based on the putting data.
+Permute the elements of genotype data.
 }
 \value{
-  \item{perm_case_11    }{a vector with 'n' elements.}
-  \item{perm_case_12    }{a vector with 'n' elements.}
-  \item{perm_case_22    }{a vector with 'n' elements.}
-  \item{perm_control_11 }{a vector with 'n' elements.}
-  \item{perm_control_12 }{a vector with 'n' elements.}
-  \item{perm_control_22 }{a vector with 'n' elements.}
+The return value is a matrix with one row and the elements has been permutated.
 }
 \references{
 William S Noble(Nat Biotechnol.2009): How does multiple testing correction work?
@@ -53,24 +32,20 @@ Edgington. E.S.(1995): Randomization tests, 3rd ed.
 Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
 }
 \seealso{
-    \code{\link{Armitage}},
-	\code{\link{Armitage.TradPerm}},
-    \code{\link{Armitage.MCPerm}},
-    \code{\link{OR}},
+   \code{\link{Armitage.TradPerm}},
 	\code{\link{OR.TradPerm}},
-	\code{\link{OR.MCPerm}},
-	\code{\link{permuteData}},
-	\code{\link{genotypeStat}},
-    \code{\link{chisq.TradPerm}},
-	\code{\link{chisq.MCPerm}},
+	\code{\link{chisq.TradPerm}},
 	\code{\link{fisher.TradPerm}},
-	\code{\link{fisher.MCPerm}},
-	\code{\link{rhyper}},
-	\code{\link{chisq.test}},
-	\code{\link{fisher.test}}
+	\code{\link{meta.TradPerm}},
+	\code{\link{permuteGenotypeCount}},
+	\code{\link{chisq.MCPerm}}
 }
 \examples{
-permuteGenotype(case_11=23,case_12=0,case_22=34,control_11=0,control_12=34,control_22=45,n=5)
+# dataLine1=matrix(c("rs12","AA","AG","GG","CG","AA"),nrow=1)
+# permuteGenotype(dataLine1,fromCol=2)
+# dataLine2=matrix(c("rs12","AA","AG","GG","CG","AA",
+   # "rs12","AA","AG","GG","CG","AA"),nrow=2,byrow=TRUE)
+# permuteGenotype(dataLine2,fromCol=2)
 }
 \keyword{ permutation }
 \keyword{ genotype }

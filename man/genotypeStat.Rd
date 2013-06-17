@@ -62,44 +62,46 @@ Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
 When input the parameter 'naString' and 'sep', please make sure correct. Otherwise the result will be wrong. 
 }
 \seealso{
-    \code{\link{Armitage}},
-    \code{\link{Armitage.TradPerm}},
-	\code{\link{Armitage.MCPerm}},
-    \code{\link{OR}},
-    \code{\link{OR.TradPerm}},
+   \code{\link{OR.TradPerm}},
 	\code{\link{OR.MCPerm}},
-	\code{\link{permuteData}},
-	\code{\link{permuteGenotype}},
-    \code{\link{chisq.TradPerm}},
+   \code{\link{Armitage}},
+	\code{\link{Armitage.TradPerm}},
+   \code{\link{Armitage.MCPerm}},
+	\code{\link{chisq.test}},
+   \code{\link{chisq.TradPerm}},
 	\code{\link{chisq.MCPerm}},
+   \code{\link{fisher.test}},
 	\code{\link{fisher.TradPerm}},
 	\code{\link{fisher.MCPerm}},
-	\code{\link{rhyper}},
-	\code{\link{chisq.test}},
-	\code{\link{fisher.test}}
+	\code{\link{meta}},
+	\code{\link{meta.TradPerm}},
+	\code{\link{meta.MCPerm}},
+	\code{\link{permuteGenotype}},
+   \code{\link{rhyper}},
+	\code{\link{permuteGenotypeCount}}
 }
 \examples{
 ## import example data(data.frame)
-data(exampleData)
+# data(genotypeData)
 ## get the first line: affection state for samples
-data1=exampleData[1,,drop=FALSE]
+#data1=genotypeData[1,,drop=FALSE]
 ## get the second line: genotype data for a sepcifed snp
-data2=exampleData[2,,drop=FALSE]
+# data2=genotypeData[2,,drop=FALSE]
 
 ## Statistical allele and genotype frequency of the specified snp(rs#) for case-control data.
-result2=genotypeStat(data2,data1,fromCol=2,naString="?_?",sep="_")
+# result2=genotypeStat(data2,data1,fromCol=2,naString="?_?",sep="_")
 ## allele frequency for case and control samples
-alleleResult=result2$alleleCount
+# alleleResult=result2$alleleCount
 ## genotype frequency for case and control samples
-genotypeReslut=result2$genotypeCount
+# genotypeReslut=result2$genotypeCount
 
 ## matrix
-genotypeLine=matrix(c("rs12","AA","AT","NN","AT","AT","AT"),nrow=1)
-affectionLine=matrix(c("Affection",0,0,1,1,0,0),nrow=1)
-fromCol=2
-naString="NN"
-sep=""
-genotypeStat(genotypeLine, affectionLine, fromCol, naString, sep)
+# genotypeLine=matrix(c("rs12","AA","AT","NN","AT","AT","AT"),nrow=1)
+# affectionLine=matrix(c("Affection",0,0,1,1,0,0),nrow=1)
+# fromCol=2
+# naString="NN"
+# sep=""
+# genotypeStat(genotypeLine, affectionLine, fromCol, naString, sep)
 
 ## connect file
 # datafile=file("F:/data.txt","r")
@@ -111,4 +113,4 @@ genotypeStat(genotypeLine, affectionLine, fromCol, naString, sep)
 # dataLine2=t(unlist(strsplit(dataLine2,sep="")))
 # genotypeStat(dataLine2,dataLine1,fromCol=2,naString="NN",sep="")
 }
-\keyword{ genotype }
+\keyword{ genotypeStat }

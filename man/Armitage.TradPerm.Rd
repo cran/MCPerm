@@ -29,7 +29,7 @@ a character string for NA values of genotype.
 character separator used to divide genotype between alleles "Allele1<sep>Allele2".
 }
   \item{repeatNum}{
-an integer specifying the number of replicates for permutation test.
+an integer(default 1000) specifying the number of replicates for permutation test.
 }
 }
 \details{
@@ -72,35 +72,38 @@ Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
 When input the parameter 'naString' and 'sep', please make sure correct. Otherwise the result will be wrong. 
 }
 \seealso{
-    \code{\link{Armitage}},
-    \code{\link{Armitage.MCPerm}},
-    \code{\link{OR}},
-    \code{\link{OR.TradPerm}},
+   \code{\link{OR}},
+	\code{\link{OR.TradPerm}},
 	\code{\link{OR.MCPerm}},
-	\code{\link{permuteData}},
-	\code{\link{permuteGenotype}},
-	\code{\link{genotypeStat}},
-    \code{\link{chisq.TradPerm}},
+   \code{\link{Armitage}},
+   \code{\link{Armitage.MCPerm}},
+	\code{\link{chisq.test}},
+   \code{\link{chisq.TradPerm}},
 	\code{\link{chisq.MCPerm}},
+   \code{\link{fisher.test}},
 	\code{\link{fisher.TradPerm}},
 	\code{\link{fisher.MCPerm}},
-	\code{\link{rhyper}},
-	\code{\link{chisq.test}},
-	\code{\link{fisher.test}}
+	\code{\link{meta}},
+	\code{\link{meta.TradPerm}},
+	\code{\link{meta.MCPerm}},
+	\code{\link{permuteGenotype}},
+   \code{\link{rhyper}},
+	\code{\link{permuteGenotypeCount}},
+	\code{\link{genotypeStat}}
 }
 \examples{
-# import example data
-data(exampleData)
-# get the first line: affection state for samples
-data1=exampleData[1,,drop=FALSE]
-# get the second line: genotype data for a sepcifed snp
-data2=exampleData[2,,drop=FALSE]
-Armitage.TradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",repeatNum=5)
+## import example data
+# data(genotypeData)
+## get the first line: affection state for samples
+# data1=genotypeData[1,,drop=FALSE]
+## get the second line: genotype data for a sepcifed snp
+# data2=genotypeData[2,,drop=FALSE]
+# Armitage.TradPerm(data2,data1,fromCol=2,naString="?_?",sep="_",repeatNum=10000)
 
 ## matrix
-genotypeLine=matrix(c("rs12","AA","TT","TA","AA","TT","AA","AA"),nrow=1)
-affectionLine=matrix(c("Affection",1,1,1,0,0,0,0),nrow=1)
-Armitage.TradPerm(genotypeLine,affectionLine,fromCol=2,naString="NN",sep="",repeatNum=5)
+# genotypeLine=matrix(c("rs12","AA","TT","TA","AA","TT","AA","AA"),nrow=1)
+# affectionLine=matrix(c("Affection",1,1,1,0,0,0,0),nrow=1)
+# Armitage.TradPerm(genotypeLine,affectionLine,fromCol=2,naString="NN",sep="",repeatNum=5)
 
 ## connect file
 # datafile=file("F:/data.txt","r")
@@ -113,4 +116,4 @@ Armitage.TradPerm(genotypeLine,affectionLine,fromCol=2,naString="NN",sep="",repe
 # Armitage.TradPerm(dataLine2,dataLine1,fromCol=2,naString="NN",sep="",repeatNum=5)
 }
 \keyword{ Armitage.TradPerm }
-\keyword{ permutation }
+\keyword{ TradPerm }

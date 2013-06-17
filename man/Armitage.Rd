@@ -49,29 +49,32 @@ statgen.org(2007): A derivation for Armitage's trend test for the 2x3 genotype t
 Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
 }
 \seealso{
-    \code{\link{Armitage.TradPerm}},
-    \code{\link{Armitage.MCPerm}},
-    \code{\link{OR}},
-    \code{\link{OR.TradPerm}},
+   \code{\link{OR}},
+	\code{\link{OR.TradPerm}},
 	\code{\link{OR.MCPerm}},
-	\code{\link{permuteData}},
-	\code{\link{permuteGenotype}},
-	\code{\link{genotypeStat}},
-    \code{\link{chisq.TradPerm}},
+   \code{\link{Armitage.TradPerm}},
+   \code{\link{Armitage.MCPerm}},
+	\code{\link{chisq.test}},
+   \code{\link{chisq.TradPerm}},
 	\code{\link{chisq.MCPerm}},
+   \code{\link{fisher.test}},
 	\code{\link{fisher.TradPerm}},
 	\code{\link{fisher.MCPerm}},
-	\code{\link{rhyper}},
-	\code{\link{chisq.test}},
-	\code{\link{fisher.test}}
+	\code{\link{meta}},
+	\code{\link{meta.TradPerm}},
+	\code{\link{meta.MCPerm}},
+	\code{\link{permuteGenotype}},
+   \code{\link{rhyper}},
+	\code{\link{permuteGenotypeCount}},
+	\code{\link{genotypeStat}}
 }
 \examples{
-case_11=4
-case_12=1
-case_22=1
-control_11=3
-control_12=0
-control_22=0
-Armitage(case_11,case_12,case_22,control_11,control_12,control_22)
+# case_11=4
+# case_12=1
+# case_22=1
+# control_11=3
+# control_12=0
+# control_22=0
+# Armitage(case_11,case_12,case_22,control_11,control_12,control_22)
 }
 \keyword{ Armitage }

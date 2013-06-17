@@ -23,7 +23,7 @@ a non-negative integer, the frequency of allele1 in control samples.
 a non-negative integer, the frequency of allele2 in control samples. 
 }
   \item{repeatNum}{
-an integer specifying the number of replicates used in the Monte Carlo permutation.
+an integer(default 1000) specifying the number of replicates used in the Monte Carlo permutation.
 }
 }
 \details{
@@ -50,28 +50,31 @@ Edgington. E.S.(1995): Randomization tests, 3rd ed.
 Lanying Zhang and Yongshuai Jiang <jiangyongshuai@gmail.com>
 }
 \seealso{
-    \code{\link{Armitage}},
+   \code{\link{OR}},
+	\code{\link{OR.TradPerm}},
+   \code{\link{Armitage}},
 	\code{\link{Armitage.TradPerm}},
-    \code{\link{Armitage.MCPerm}},
-    \code{\link{OR}},
-    \code{\link{OR.TradPerm}},
-	\code{\link{permuteData}},
-	\code{\link{permuteGenotype}},
-	\code{\link{genotypeStat}},
-    \code{\link{chisq.TradPerm}},
+   \code{\link{Armitage.MCPerm}},
+	\code{\link{chisq.test}},
+   \code{\link{chisq.TradPerm}},
 	\code{\link{chisq.MCPerm}},
+   \code{\link{fisher.test}},
 	\code{\link{fisher.TradPerm}},
 	\code{\link{fisher.MCPerm}},
-	\code{\link{rhyper}},
-	\code{\link{chisq.test}},
-	\code{\link{fisher.test}}
+	\code{\link{meta}},
+	\code{\link{meta.TradPerm}},
+	\code{\link{meta.MCPerm}},
+	\code{\link{permuteGenotype}},
+   \code{\link{rhyper}},
+	\code{\link{permuteGenotypeCount}},
+	\code{\link{genotypeStat}}
 }
 \examples{
-case_allele1=23
-case_allele2=34
-control_allele1=26
-control_allele2=29
-OR.MCPerm(23,34,26,29,repeatNum=5)
+# case_allele1=23
+# case_allele2=34
+# control_allele1=26
+# control_allele2=29
+# OR.MCPerm(23,34,26,29,repeatNum=100000)
 }
 \keyword{ OR.MCPerm }
-\keyword{ permutation }
+\keyword{ MCPerm }
